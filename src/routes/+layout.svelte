@@ -47,7 +47,7 @@
 		</nav>
 	</header>
 
-	<div class="h-auto lg:flex-grow lg:overflow-y-auto">
+	<div class="h-auto lg:flex-grow lg:overflow-y-auto lg:pr-8">
 		<main>
 			<slot />
 		</main>

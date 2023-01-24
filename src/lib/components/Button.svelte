@@ -10,7 +10,7 @@
 	{type}
 	class:w-full={fullWidth}
 	class:py-2={padding === 'small'}
-	class="rounded-md bg-red p-3.5 text-center"
+	class="rounded-md bg-red p-3.5 text-center transition-colors hover:bg-white hover:text-blue-semi-dark"
 	on:click
 >
 	<slot />
