@@ -13,7 +13,7 @@ services:
     volumes:
       - ..:/workspace:cached
     network_mode: service:cockroachdb
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    command: sleep infinity
 
   cockroachdb:
     image: cockroachdb/cockroach:latest
