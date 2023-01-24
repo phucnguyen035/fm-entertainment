@@ -11,7 +11,7 @@
 </script>
 
 <div class:trending class="group relative">
-	<div class="relative mb-2 overflow-hidden rounded-lg">
+	<div class:mb-2={!trending} class="relative overflow-hidden rounded-lg">
 		<div
 			class="absolute inset-0 -z-10 grid place-items-center overflow-hidden bg-blue-dark/0 transition-colors group-hover:z-10 group-hover:bg-blue-dark/50"
 		>
@@ -27,9 +27,13 @@
 		</div>
 
 		<img
-			src={getImageThumbnailUrl(item.thumbnail)}
+			loading="lazy"
+			src={getImageThumbnailUrl(item.thumbnail, trending ? 'trending' : 'regular', 'large')}
 			alt={item.title}
-			class="h-full w-full transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:scale-100"
+			width={240}
+			height={140}
+			class:trending
+			class="transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:scale-100"
 		/>
 	</div>
 
@@ -37,12 +41,7 @@
 		<ButtonBookmark {bookmarked} on:click />
 	</div>
 
-	<div
-		class:absolute={trending}
-		class:bottom-4={trending}
-		class:left-4={trending}
-		class="overflow-hidden"
-	>
+	<div class:absolute={trending} class:bottom-0={trending} class="left-4 overflow-hidden md:left-6">
 		<div class:trending-info={trending}>
 			<ul class="flex list-disc gap-x-5 text-small text-white/75">
 				<li class="list-none">{item.year}</li>
@@ -62,17 +61,17 @@
 				<li>{item.rating}</li>
 			</ul>
 
-			<h2 class="mb-1 text-base font-medium">{item.title}</h2>
+			<h2 class:md:text-heading-s={trending} class="mb-1 text-base font-medium">{item.title}</h2>
 		</div>
 	</div>
 </div>
 
 <style lang="postcss">
 	.trending {
-		@apply w-60 overflow-hidden rounded-lg md:w-[470px];
+		@apply h-[140px] w-60 overflow-hidden rounded-lg md:h-[230px] md:w-[470px];
 	}
 
 	.trending-info {
-		@apply opacity-100 [transition:transform_500ms,opacity_200ms] group-hover:translate-y-14 group-hover:opacity-0 motion-reduce:transition-none;
+		@apply pb-4 opacity-100 [transition:transform_500ms,opacity_200ms] group-hover:translate-y-14 group-hover:opacity-0 motion-reduce:transition-none md:pb-6;
 	}
 </style>
