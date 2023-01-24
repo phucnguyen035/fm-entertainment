@@ -4,7 +4,6 @@
 	import IconNavHome from '$lib/components/IconNavHome.svelte';
 	import IconNavMovies from '$lib/components/IconNavMovies.svelte';
 	import IconNavTv from '$lib/components/IconNavTv.svelte';
-	import cx from 'classix';
 
 	import '@fontsource/outfit';
 	import '../app.postcss';
@@ -31,12 +30,7 @@
 				{#each navItems as { label, href, Icon }}
 					<li>
 						<a aria-label={label} {href} class="group inline-block h-5 w-5">
-							<Icon
-								class={cx(
-									'fill-blue-grey transition-colors group-hover:fill-white',
-									$page.url.pathname === href && 'fill-white'
-								)}
-							/>
+							<Icon active={$page.url.pathname === href} />
 						</a>
 					</li>
 				{/each}
