@@ -7,8 +7,6 @@
 </script>
 
 <SearchWrapper searchData={data.items}>
-	<div class="space-y-4">
-		<Section items={data.trending} title="Trending" type="trending" />
-		<Section items={data.items} title="Recommended for you" />
-	</div>
+	<Section items={data.trending} title="Trending" type="trending" />
+	<Section items={data.items} title="Recommended for you" />
 </SearchWrapper>

@@ -25,5 +25,7 @@
 {#if search}
 	<Section items={filteredItems} title={`Found ${filteredItems.length} results for '${search}'`} />
 {:else}
-	<slot />
+	<div class="space-y-4">
+		<slot />
+	</div>
 {/if}
