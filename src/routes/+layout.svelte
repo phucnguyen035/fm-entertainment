@@ -18,38 +18,54 @@
 	] as const;
 </script>
 
-<header class="h-14 bg-blue-semi-dark md:h-[72px] lg:h-auto">
-	<nav class="flex h-full items-center px-4">
-		<img src="/assets/logo.svg" alt="Logo" />
+<div class="flex flex-col p-4 md:p-6 lg:h-screen lg:flex-row lg:space-x-9 lg:p-8 lg:pr-0">
+	<header
+		class="-mx-4 -mt-4 h-14 flex-shrink-0 bg-blue-semi-dark md:mx-0 md:mt-0 md:h-[72px] md:rounded-[10px] lg:h-auto lg:w-24"
+	>
+		<nav class="flex h-full items-center px-4 lg:flex-col lg:py-8">
+			<img src="/assets/logo.svg" alt="Logo" />
 
-		<ul class="flex flex-grow justify-center space-x-6 md:space-x-8">
-			{#each navItems as { label, href, Icon }}
-				<li>
-					<a aria-label={label} {href} class="group inline-block h-5 w-5">
-						<Icon
-							class={cx(
-								'fill-blue-grey transition-colors group-hover:fill-white',
-								$page.url.pathname === href && 'fill-white'
-							)}
-						/>
-					</a>
-				</li>
-			{/each}
-		</ul>
+			<ul
+				class="flex flex-grow justify-center space-x-6 md:space-x-8 lg:mt-[75px] lg:flex-col lg:items-center lg:justify-start lg:space-x-0 lg:space-y-10"
+			>
+				{#each navItems as { label, href, Icon }}
+					<li>
+						<a aria-label={label} {href} class="group inline-block h-5 w-5">
+							<Icon
+								class={cx(
+									'fill-blue-grey transition-colors group-hover:fill-white',
+									$page.url.pathname === href && 'fill-white'
+								)}
+							/>
+						</a>
+					</li>
+				{/each}
+			</ul>
 
-		<div>
-			<Button fullWidth padding="small">Sign in</Button>
-			<!-- <img
+			<div>
+				<Button fullWidth padding="small">Sign in</Button>
+				<!-- <img
 				src="."
 				alt="User avatar"
 				class="grid h-6 w-6 place-items-center rounded-full border border-white"
 			/> -->
-		</div>
-	</nav>
-</header>
+			</div>
+		</nav>
+	</header>
 
-<main>
-	<slot />
-</main>
+	<div class="h-auto lg:flex-grow lg:overflow-y-auto">
+		<main>
+			<slot />
+		</main>
 
-<footer>Made with ❤️</footer>
+		<footer class="mt-8 text-center">
+			Made with ❤️ by
+			<a
+				href="https://github.com/phucnguyen035"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="font-bold text-red">Phuc Nguyen</a
+			>
+		</footer>
+	</div>
+</div>
