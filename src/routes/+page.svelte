@@ -6,10 +6,10 @@
 </script>
 
 <div class="space-y-4">
-	<h1 class="text-4xl font-bold text-emerald-500">Welcome to SvelteKit</h1>
+	<h1 class="text-emerald-500 text-4xl font-bold">Welcome to SvelteKit</h1>
 
 	<section>
-		<h2 class="text-3xl font-semibold text-emerald-500">Movies and TV Shows</h2>
+		<h2 class="text-heading-l">Movies and TV Shows</h2>
 
 		<ul>
 			{#each data.items as item (item.id)}
@@ -26,7 +26,7 @@
 	</section>
 
 	<section>
-		<h2 class="text-3xl font-semibold text-emerald-500">Trending items</h2>
+		<h2 class="text-emerald-500 text-3xl font-semibold">Trending items</h2>
 
 		<ul>
 			{#each data.trending as item (item.id)}
