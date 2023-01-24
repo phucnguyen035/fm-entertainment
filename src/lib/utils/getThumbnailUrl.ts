@@ -21,7 +21,5 @@ export function getImageThumbnailUrl(
 		return '';
 	}
 
-	const url = result.data[type]?.[size]?.replace('./', '/') ?? '';
-
-	return new URL(url, import.meta.url).href;
+	return result.data[type]?.[size]?.replace('./', '/') ?? '';
 }
