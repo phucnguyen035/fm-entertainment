@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+/** @type {import('tailwindcss/types').Config} */
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
@@ -11,7 +12,7 @@ const config = {
 				'semi-dark': '#161D2F',
 				dark: '#10141E',
 				grey: '#5A698F'
-			},
+			}
 		},
 		fontFamily: {
 			sans: ['Outfit', ...defaultTheme.fontFamily.sans]
