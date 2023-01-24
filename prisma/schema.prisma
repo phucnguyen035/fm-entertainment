@@ -15,7 +15,9 @@ model Item {
   title      String
   year       Int
   category   String
-  ranking    String
+  rating     String
   thumbnail  Json
   isTrending Boolean @default(false)
+
+  @@map("items")
 }
