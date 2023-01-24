@@ -7,7 +7,7 @@ x-environment: &-environment
 
 services:
   app:
-    build: .
+    image: mcr.microsoft.com/devcontainers/typescript-node:0-18
     environment:
       <<: *-environment
     volumes:
