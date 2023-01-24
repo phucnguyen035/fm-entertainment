@@ -33,7 +33,7 @@
 			width={240}
 			height={140}
 			class:trending
-			class="transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:scale-100"
+			class="transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:scale-100 lg:w-[280px]"
 		/>
 	</div>
 
