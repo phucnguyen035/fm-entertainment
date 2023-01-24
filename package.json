@@ -14,6 +14,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
+		"@fontsource/outfit": "^4.5.11",
 		"@prisma/client": "^4.9.0",
 		"zod": "^3.20.2"
 	},
