@@ -1,8 +1,28 @@
 version: '3.7'
 
+x-environment: &-environment
+  COCKROACH_DATABASE: environment
+  COCKROACH_USER: cockroach
+  COCKROACH_PASSWORD: cockroach
+
 services:
   app:
+    build: .
+    environment:
+      <<: *-environment
     volumes:
-      - .:/workspace:cached
+      - ..:/workspace:cached
     network_mode: service:cockroachdb
     command: /bin/sh -c "while sleep 1000; do :; done"
+
+  cockroachdb:
+    image: cockroachdb/cockroach:latest
+    environment:
+      <<: *-environment
+    command: start-single-node
+
+    volumes:
+      - db:/cockroach/cockroach-data
+
+volumes:
+  db:
