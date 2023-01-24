@@ -10,6 +10,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.45.0
   '@typescript-eslint/parser': ^5.45.0
   autoprefixer: ^10.4.7
+  classix: ^2.1.21
   eslint: ^8.28.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-svelte3: ^4.0.0
@@ -32,6 +33,7 @@ specifiers:
 dependencies:
   '@fontsource/outfit': 4.5.11
   '@prisma/client': 4.9.0_prisma@4.9.0
+  classix: 2.1.21
   zod: 3.20.2
 
 devDependencies:
@@ -795,6 +797,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /classix/2.1.21:
+    resolution: {integrity: sha512-vI6fRGXOcfBgvI6J/50msPUlBPP8LV4Gy3rwesiRe+0tPOsgNYOst9So6wMJNJKpZq1jq9HjBA/Fwu126ebOtA==}
+    dev: false
 
   /color-convert/2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
