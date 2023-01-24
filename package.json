@@ -16,7 +16,6 @@
 	"dependencies": {
 		"@fontsource/outfit": "^4.5.11",
 		"@prisma/client": "^4.9.0",
-		"classix": "^2.1.21",
 		"zod": "^3.20.2"
 	},
 	"devDependencies": {
