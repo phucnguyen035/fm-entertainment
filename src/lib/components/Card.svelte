@@ -33,7 +33,7 @@
 			width={240}
 			height={140}
 			class:trending
-			class="transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:scale-100 lg:w-[280px]"
+			class="w-full transition-transform duration-500 group-hover:scale-110 motion-reduce:group-hover:scale-100 lg:min-w-[280px]"
 		/>
 	</div>
 
@@ -41,7 +41,7 @@
 		<ButtonBookmark {bookmarked} on:click />
 	</div>
 
-	<div class:absolute={trending} class:bottom-0={trending} class="left-4 overflow-hidden md:left-6">
+	<div class:trending-info-wrapper={trending} class="left-4 overflow-hidden md:left-6">
 		<div class:trending-info={trending}>
 			<ul class="flex list-disc gap-x-5 text-small text-white/75">
 				<li class="list-none">{item.year}</li>
@@ -72,6 +72,10 @@
 	}
 
 	.trending-info {
-		@apply pb-4 opacity-100 [transition:transform_500ms,opacity_200ms] group-hover:translate-y-14 group-hover:opacity-0 motion-reduce:transition-none md:pb-6;
+		@apply rounded-lg bg-blue-dark/30 p-2 opacity-100 [transition:transform_500ms,opacity_200ms] group-hover:translate-y-14 group-hover:opacity-0 motion-reduce:transition-none;
+
+		&-wrapper {
+			@apply absolute bottom-0 pb-4 md:pb-6;
+		}
 	}
 </style>
