@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { getImageThumbnailUrl } from '$lib/utils/getThumbnailUrl';
-	import type { Item } from '@prisma/client';
+	import type { Bookmark, Item } from '@prisma/client';
 	import ButtonBookmark from './ButtonBookmark.svelte';
 
-	export let item: Item;
-	export let bookmarked = false;
+	export let item: Item & { bookmarks: Bookmark[] };
 	export let type: 'default' | 'trending' = 'default';
 
 	$: trending = type === 'trending';
