@@ -4,10 +4,11 @@
 	import IconNavHome from '$lib/components/IconNavHome.svelte';
 	import IconNavMovies from '$lib/components/IconNavMovies.svelte';
 	import IconNavTv from '$lib/components/IconNavTv.svelte';
+	import Button from '$lib/components/Button.svelte';
+	import { signIn } from '@auth/sveltekit/client';
 
 	import '@fontsource/outfit';
 	import '../app.postcss';
-	import Button from '$lib/components/Button.svelte';
 
 	const navItems = [
 		{ label: 'Home', Icon: IconNavHome, href: '/' },
@@ -37,12 +38,15 @@
 			</ul>
 
 			<div>
-				<Button fullWidth padding="small">Sign in</Button>
-				<!-- <img
-				src="."
-				alt="User avatar"
-				class="grid h-6 w-6 place-items-center rounded-full border border-white"
-			/> -->
+				{#if $page.data.session}
+					<img
+						src={$page.data.session.user?.image ?? ''}
+						alt="User avatar"
+						class="grid h-6 w-6 place-items-center rounded-full border border-white lg:h-10 lg:w-10"
+					/>
+				{:else}
+					<Button fullWidth padding="small" on:click={() => signIn('github')}>Sign in</Button>
+				{/if}
 			</div>
 		</nav>
 	</header>
