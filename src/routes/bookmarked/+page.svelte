@@ -1,5 +1,6 @@
 <script lang="ts">
-	import SearchWrapper from '$lib/components/SearchWrapper.svelte';
+	import Meta from '$lib/components/Meta.svelte';
+import SearchWrapper from '$lib/components/SearchWrapper.svelte';
 	import Section from '$lib/components/Section.svelte';
 	import type { PageServerData } from './$types';
 
@@ -13,3 +14,5 @@
 	<Section items={movies} title="Bookmarked Movies" />
 	<Section items={tvs} title="Bookmarked TV Series" />
 </SearchWrapper>
+
+<Meta title="Bookmarked" />
