@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "bookmarks" (
     "userId" STRING NOT NULL,
-    "itemId" INT8 NOT NULL,
+    "itemId" INT4 NOT NULL,
 
     CONSTRAINT "bookmarks_pkey" PRIMARY KEY ("userId","itemId")
 );

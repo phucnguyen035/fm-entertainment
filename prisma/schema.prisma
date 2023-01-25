@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Item {
-  id         BigInt     @id @default(sequence())
+  id         Int        @id @default(sequence())
   title      String
   year       Int
   category   String
@@ -78,7 +78,7 @@ model VerificationToken {
 model Bookmark {
   userId String
   user   User   @relation(fields: [userId], references: [id])
-  itemId BigInt
+  itemId Int
   Item   Item   @relation(fields: [itemId], references: [id])
 
   @@id([userId, itemId])
