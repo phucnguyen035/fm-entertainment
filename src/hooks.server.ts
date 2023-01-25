@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { GITHUB_ID, GITHUB_SECRET } from '$env/static/private';
 import type { Provider } from '@auth/core/providers';
 import GitHub from '@auth/core/providers/github';
@@ -7,7 +8,9 @@ import { PrismaClient } from '@prisma/client';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+	log: dev ? ['query', 'info', 'warn', 'error'] : ['error']
+});
 
 const connectPrisma = (({ event, resolve }) => {
 	event.locals.prisma = prisma;
