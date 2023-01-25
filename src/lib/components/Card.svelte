@@ -35,7 +35,7 @@
 <div class:trending class="group relative">
 	<div class:mb-2={!trending} class="relative overflow-hidden rounded-lg">
 		<div
-			class="absolute inset-0 -z-10 grid place-items-center overflow-hidden bg-blue-dark/0 transition-colors group-hover:z-10 group-hover:bg-blue-dark/50"
+			class="absolute inset-0 -z-10 hidden place-items-center overflow-hidden bg-blue-dark/0 transition-colors group-hover:z-10 group-hover:grid group-hover:bg-blue-dark/50"
 		>
 			<button class="flex items-center rounded-3xl bg-white/25 p-2.5">
 				<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"
