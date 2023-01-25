@@ -1,22 +1,13 @@
 import type { PageServerLoad } from './$types';
 
-export const load = (async ({ locals: { prisma, getSession } }) => {
-	const session = await getSession();
-	const data = await prisma.item.findMany({
-		where: { category: 'TV Series' },
-		include: {
-			bookmarks: {
-				where: {
-					user: session?.user
-				}
-			}
-		}
-	});
+export const load = (async ({ locals: { prisma, getSession }, parent }) => {
+	const { bookmarkSet } = await parent();
+	const data = await prisma.item.findMany({ where: { category: 'TV Series' } });
 
-	const items = data.map(({ bookmarks, ...rest }) => ({
-		bookmarked: bookmarks.length > 0,
-		...rest
+	const items = data.map((item) => ({
+		...item,
+		bookmarked: bookmarkSet.has(item.id)
 	}));
 
-	return { items, session };
+	return { items, session: await getSession() };
 }) satisfies PageServerLoad;
