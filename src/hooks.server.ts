@@ -22,6 +22,18 @@ export const handle = sequence(
 	connectPrisma,
 	SvelteKitAuth({
 		adapter: PrismaAdapter(prisma),
-		providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET }) as Provider]
+		providers: [GitHub({ clientId: GITHUB_ID, clientSecret: GITHUB_SECRET }) as Provider],
+		callbacks: {
+			async session({ session, user }) {
+				session = {
+					...session,
+					user: {
+						...session.user,
+						id: user.id
+					}
+				};
+				return session;
+			}
+		}
 	})
 );
