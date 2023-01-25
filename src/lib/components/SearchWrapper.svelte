@@ -12,12 +12,14 @@
 	});
 </script>
 
-<label class="my-8 flex h-6 gap-x-4 outline-none md:h-8 md:gap-x-7">
-	<img src="/assets/icon-search.svg" alt="Search" />
+<label class="outline-nonemd:gap-x-7 my-8 inline-flex gap-x-4">
+	<div>
+		<img src="/assets/icon-search.svg" alt="Search" />
+	</div>
 	<input
 		bind:value={search}
 		type="text"
-		class="bg-blue-dark text-white focus:outline-none md:text-heading"
+		class="border-b-2 border-blue-grey/0 bg-blue-dark pb-3.5 text-white caret-red focus:border-blue-grey focus:outline-none md:text-heading"
 		{placeholder}
 	/>
 </label>
