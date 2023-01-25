@@ -16,7 +16,9 @@
 	<ul class:trending class:default={!trending}>
 		{#each items as item, index (item.id)}
 			<li in:fade={{ delay: index * 100, duration: 100 }} out:fade={{ duration: 100 }}>
-				<Card {item} {type} />
+				{#key item}
+					<Card {item} {type} />
+				{/key}
 			</li>
 		{:else}
 			<li>

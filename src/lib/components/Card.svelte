@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation';
+	import type { BookmarkPayload } from '$lib/schemas';
 	import { getImageThumbnailUrl } from '$lib/utils/getThumbnailUrl';
 	import type { Bookmark, Item } from '@prisma/client';
 	import ButtonBookmark from './ButtonBookmark.svelte';
@@ -6,7 +8,31 @@
 	export let item: Item & { bookmarks: Bookmark[] };
 	export let type: 'default' | 'trending' = 'default';
 
+	$: bookmarked = item.bookmarks.length > 0;
 	$: trending = type === 'trending';
+
+	async function toggleBookmark() {
+		bookmarked = !bookmarked;
+
+		const payload: BookmarkPayload = {
+			itemId: item.id
+		};
+
+		const res = await fetch('/api/bookmark', {
+			method: 'POST',
+			body: JSON.stringify(payload),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+		if (!res.ok) {
+			console.error(res.statusText);
+			return;
+		}
+
+		await invalidateAll();
+	}
 </script>
 
 <div class:trending class="group relative">
@@ -37,7 +63,7 @@
 	</div>
 
 	<div class="absolute right-2 top-2 z-20">
-		<ButtonBookmark {bookmarked} on:click />
+		<ButtonBookmark {bookmarked} on:click={toggleBookmark} />
 	</div>
 
 	<div class:trending-info-wrapper={trending} class="left-4 overflow-hidden md:left-6">
