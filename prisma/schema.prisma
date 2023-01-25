@@ -11,13 +11,14 @@ datasource db {
 }
 
 model Item {
-  id         BigInt  @id @default(sequence())
+  id         BigInt     @id @default(sequence())
   title      String
   year       Int
   category   String
   rating     String
   thumbnail  Json
-  isTrending Boolean @default(false) @map("is_trending")
+  isTrending Boolean    @default(false) @map("is_trending")
+  bookmarks  Bookmark[]
 
   @@map("items")
 }
@@ -53,13 +54,14 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  bookmarks     Bookmark[]
 
   @@map("users")
 }
@@ -71,4 +73,14 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+model Bookmark {
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  itemId BigInt
+  Item   Item   @relation(fields: [itemId], references: [id])
+
+  @@id([userId, itemId])
+  @@map("bookmarks")
 }
