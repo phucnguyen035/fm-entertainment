@@ -2,18 +2,15 @@
 	import { invalidateAll } from '$app/navigation';
 	import type { BookmarkPayload } from '$lib/schemas';
 	import { getImageThumbnailUrl } from '$lib/utils/getThumbnailUrl';
-	import type { Bookmark, Item } from '@prisma/client';
+	import type { Item } from '@prisma/client';
 	import ButtonBookmark from './ButtonBookmark.svelte';
 
-	export let item: Item & { bookmarks: Bookmark[] };
+	export let item: Item & { bookmarked: boolean };
 	export let type: 'default' | 'trending' = 'default';
 
-	$: bookmarked = item.bookmarks.length > 0;
 	$: trending = type === 'trending';
 
 	async function toggleBookmark() {
-		bookmarked = !bookmarked;
-
 		const payload: BookmarkPayload = {
 			itemId: item.id
 		};
@@ -63,7 +60,7 @@
 	</div>
 
 	<div class="absolute right-2 top-2 z-20">
-		<ButtonBookmark {bookmarked} on:click={toggleBookmark} />
+		<ButtonBookmark bookmarked={item.bookmarked} on:click={toggleBookmark} />
 	</div>
 
 	<div class:trending-info-wrapper={trending} class="left-4 overflow-hidden md:left-6">

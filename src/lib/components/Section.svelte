@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { Bookmark, Item } from '@prisma/client';
+	import type { Item } from '@prisma/client';
 	import { fade } from 'svelte/transition';
 	import Card from './Card.svelte';
 
-	export let items: Array<Item & { bookmarks: Bookmark[] }>;
+	export let items: Array<Item & { bookmarked: boolean }>;
 	export let title: string;
 	export let type: Card['$$prop_def']['type'] = 'default';
 

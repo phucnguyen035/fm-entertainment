@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Bookmark, Item } from '@prisma/client';
+	import type { Item } from '@prisma/client';
 	import Section from './Section.svelte';
 
-	export let searchData: Array<Item & { bookmarks: Bookmark[] }>;
+	export let searchData: Array<Item & { bookmarked: boolean }>;
 	export let placeholder = 'Search for movies or TV series';
 
 	let search = '';
